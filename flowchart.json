@@ -1,0 +1,147 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "type": "process",
+      "layer": 0,
+      "id": "prod-down Steps"
+    },
+    {
+      "type": "process",
+      "layer": 1,
+      "id": "Understand Problem Specifics"
+    },
+    {
+      "type": "process",
+      "layer": 2,
+      "id": "What do the users see?"
+    },
+    {
+      "type": "process",
+      "layer": 2,
+      "id": "Request Data"
+    },
+    {
+      "type": "decision",
+      "layer": 3,
+      "id": "Is there a known workaround?"
+    },
+    {
+      "type": "action",
+      "layer": 3,
+      "content": "WT_HOME/codebase/wt.properties\nWT_HOME/db/db.properties\nTOMCAT_HOME/conf/server.xml\nTOMCAT_HOME/bin/wttomcat_start.xxx",
+      "id": "Property_Files_List"
+    },
+    {
+      "type": "process",
+      "layer": 4,
+      "id": "Log Files"
+    },
+    {
+      "type": "process",
+      "layer": 5,
+      "id": "Diagnostic Information"
+    },
+    {
+      "type": "process",
+      "layer": 6,
+      "id": "Request System Layout"
+    },
+    {
+      "content": "Request System Layout",
+      "type": "process",
+      "layer": 6,
+      "id": "System_Layout"
+    },
+    {
+      "type": "process",
+      "layer": 7,
+      "id": "Obvious issues?"
+    },
+    {
+      "type": "process",
+      "layer": 7,
+      "id": "wt.properties"
+    },
+    {
+      "type": "process",
+      "layer": 7,
+      "id": "db.properties"
+    },
+    {
+      "content": "\nwt.maxDbConnections=10 or less\nwt.pom.minDbConnections=10 or less\nwt.pom.maxIdleStatementCaches=0\nwt.pom.rowPrefetchCount=20 or less\nwt.pom.statementCacheSize=50\n               ",
+      "type": "process",
+      "layer": 7,
+      "id": "db.properties_checks"
+    }
+  ],
+  "edges": [
+    {
+      "label": "First",
+      "source": "prod-down Steps",
+      "target": "Understand Problem Specifics"
+    },
+    {
+      "label": "Understand",
+      "source": "Understand Problem Specifics",
+      "target": "What do the users see?"
+    },
+    {
+      "label": "Second Phase",
+      "source": "Understand Problem Specifics",
+      "target": "Request Data"
+    },
+    {
+      "label": "&",
+      "source": "What do the users see?",
+      "target": "Is there a known workaround?"
+    },
+    {
+      "label": "&",
+      "source": "Request Data",
+      "target": "Property_Files_List"
+    },
+    {
+      "label": "Third Phase",
+      "source": "Request Data",
+      "target": "Request System Layout"
+    },
+    {
+      "label": "&",
+      "source": "Property_Files_List",
+      "target": "Log Files"
+    },
+    {
+      "label": "&",
+      "source": "Log Files",
+      "target": "Diagnostic Information"
+    },
+    {
+      "label": "Understand answers to queestions",
+      "source": "Request System Layout",
+      "target": "System_Layout"
+    },
+    {
+      "label": "Low Hanging Fruit",
+      "source": "Request System Layout",
+      "target": "Obvious issues?"
+    },
+    {
+      "label": "Check",
+      "source": "Obvious issues?",
+      "target": "wt.properties"
+    },
+    {
+      "label": "&",
+      "source": "wt.properties",
+      "target": "db.properties"
+    },
+    {
+      "label": "&",
+      "source": "db.properties",
+      "target": "db.properties_checks"
+    }
+  ]
+}
