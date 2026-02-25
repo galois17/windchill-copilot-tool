@@ -1,0 +1,2 @@
+# Windchill Support Copilot (GraphRAG)
+A diagnostic tool for PTC Windchill environments. This application uses a GraphRAG (Graph Retrieval-Augmented Generation) architecture to map system relationships in Neo4j and provide actionable troubleshooting steps via an LLM.
